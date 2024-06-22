@@ -2,3 +2,4 @@
 - You had a typo in README.md demostrating -> demonstrating
 - `npm start` does not start React client, it only start server
 - I'm using the same db for tests because of no time
+- There is an error in your code. `Jobs.paid` should be init with defaultValue property, not the default.

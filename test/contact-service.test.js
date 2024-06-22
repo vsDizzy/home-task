@@ -1,9 +1,9 @@
+const { describe, it } = require('node:test')
+const assert = require('node:assert/strict')
 const {
   getContract,
   getAllContracts,
 } = require('../src/services/contract-service')
-const { describe, it } = require('node:test')
-const assert = require('node:assert/strict')
 
 describe(getContract.name, () => {
   it('gets contract for contractor', async () => {
