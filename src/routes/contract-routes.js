@@ -1,12 +1,16 @@
 const express = require('express')
 const { getProfile } = require('../middleware/getProfile')
-const { getContract } = require('../services/contract-service')
+const { getContract, getAllContracts } = require('../services/contract-service')
 
 const router = express.Router()
 
-router.get('/:id', getProfile, get)
+router.get('/', getProfile, async (req, res) => {
+  const contracts = await getAllContracts(req.profile.id)
 
-async function get(req, res) {
+  res.json(contracts)
+})
+
+router.get('/:id', getProfile, async (req, res) => {
   const contract = await getContract(req.params.id, req.profile.id)
 
   if (!contract) {
@@ -15,6 +19,6 @@ async function get(req, res) {
   }
 
   res.json(contract)
-}
+})
 
 module.exports = router
